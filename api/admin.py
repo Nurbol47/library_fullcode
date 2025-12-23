@@ -19,3 +19,13 @@ class BookAdmin(admin.ModelAdmin):
         return ", ".join([author.full_name for author in obj.authors.all()])
 
     get_author.short_description = "Авторы"
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ['get_book_title', 'full_name', 'username']
+    list_filter = ['full_name', 'username']
+    search_fields = ['book__title', 'full_name', 'username']
+
+    def get_book_title(self, obj):
+        return ", ".join([book_t.title for book_t in obj.book.all()])

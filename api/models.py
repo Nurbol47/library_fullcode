@@ -26,3 +26,16 @@ class Book(models.Model):
     class Meta:
         verbose_name = "Книга"
         verbose_name_plural = "Книги"
+
+
+class Review(models.Model):
+    book = models.ManyToManyField(Book, verbose_name="Книга")
+    full_name = models.CharField("ФИО", max_length=100)
+    username = models.CharField("Никнейм", max_length=100)
+
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"

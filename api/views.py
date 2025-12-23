@@ -9,5 +9,10 @@ class AuthorView(generics.ListCreateAPIView):
 
 
 class BookView(generics.ListCreateAPIView):
-    queryser = Book.objects.all()
+    queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+
+class ReviewView(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
